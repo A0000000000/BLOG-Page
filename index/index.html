@@ -10,6 +10,9 @@
     <script src="./node_modules/axios/dist/axios.js"></script>
     <script src="./js/index.js"></script>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./assets/waifu.css">
+    <script src="./assets/waifu-tips.js"></script>
+    <script src="./assets/live2d.js"></script>
 </head>
 
 <body>
@@ -55,7 +58,7 @@
                     </a>
                 </div>
                 <div class="item bottom">
-                    <a href="">
+                    <a href="about.html">
                         <div class="surface">
                             About
                         </div>
@@ -64,19 +67,23 @@
             </div>
         </div>
         <div class="links">
-            <a href="">Github</a>
-            <a href="">LeetCode</a>
+            <a href="https://github.com/A0000000000">Github</a>
+            <a href="https://leetcode-cn.com/u/a000000/">LeetCode</a>
             <a href="">Blog</a>
-            <a href="">Github Pages</a>
-            <a href="">About</a>
+            <a href="https://a0000000000.github.io/">Github Pages</a>
+            <a href="about.html">About</a>
         </div>
         <div class="runinfo">
-            <div>本网站运行时间: {{ time }}</div>
+            <div>本网站已运行: {{ currentTime }}</div>
             <div>您是第{{ visitCount }}位访客</div>
         </div>
         <div class="icp">
             <a href="http://www.beian.miit.gov.cn/">鲁ICP备20003013号</a>
         </div>
+    </div>
+    <div class="waifu">
+        <div class="waifu-tips"></div>
+        <canvas id="live2d" class="live2d"></canvas>
     </div>
 </body>
 
