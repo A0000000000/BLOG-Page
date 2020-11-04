@@ -6,13 +6,26 @@
 
 body {
     background: radial-gradient(#ccc, rgb(5, 1, 36));
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-.body {
-    height: 100vh;
+#title {
+    text-align: center; 
+    margin-top: 70px; 
+    margin-bottom: 120px; 
+    font-size: 50px;
+    color: gray;
+}
+
+.parent {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    margin-bottom: 120px;
 }
 
 .container {
@@ -20,7 +33,7 @@ body {
     height: 300px;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotate 10s linear forwards infinite;
+    animation: rotate 15s linear forwards infinite;
 }
 
 .container .item {
@@ -61,23 +74,30 @@ body {
     justify-content: center;
     align-items: center;
     font-size: large;
-    color: red !important;
+    color: skyblue;
+    background: radial-gradient(deepskyblue, darkblue);
+    opacity: 0.8;
+    font-size: 35px;
+}
+
+.item a {
+    text-decoration: none;
 }
 
 @keyframes rotate {
     0%, 5% {
         transform: rotateY(90deg);
     }
-    20%, 25% {
+    19%, 24% {
         transform: rotateY(180deg);
     }
-    40%, 45% {
+    38%, 43% {
         transform: rotateY(270deg);
     }
-    60%, 65% {
+    57%, 62% {
         transform: rotateX(-90deg);
     }
-    80%, 85% {
+    76%, 81% {
         transform: rotateX(0deg);
     }
     95%, 100%{
@@ -85,3 +105,33 @@ body {
     }
 }
 
+.links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.links a {
+    text-decoration: none;
+    margin-bottom: 50px;
+    color: lightblue;
+}
+
+.links a:hover {
+    color: skyblue;
+}
+
+.runinfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.icp {
+    display: flex;
+    justify-content: center;
+    color: darkblue;
+}

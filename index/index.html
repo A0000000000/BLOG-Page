@@ -5,64 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A00000的个人网站</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script src="./js/index.js"></script>
     <link rel="stylesheet" href="./css/index.css">
-    <style>
-        #title {
-            text-align: center !important;
-            font-size: 50px;
-            color: gray;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="title">
-        你好, 我是A00000, 欢迎来到我的个人网站.
-    </div>
-    <div class="body">
-        <div class="container">
-            <div class="item front">
-                <a href="https://a0000000000.github.io/">
-                    <div class="surface" style="background-image: url(./image/1.jpg);">
-                        Github Pages
-                    </div>
-                </a>
+    <div id="app">
+        <div id="title">
+            你好, 我是A00000, 欢迎来到我的个人网站.
+        </div>
+        <div class="parent">
+            <div class="container">
+                <div class="item front">
+                    <a href="https://a0000000000.github.io/">
+                        <div class="surface">
+                            Github Pages
+                        </div>
+                    </a>
+                </div>
+                <div class="item back">
+                    <a href="https://github.com/A0000000000">
+                        <div class="surface">
+                            Github
+                        </div>
+                    </a>
+                </div>
+                <div class="item left">
+                    <a href="#">
+                        <div class="surface">
+                            Index
+                        </div>
+                    </a>
+                </div>
+                <div class="item right">
+                    <a href="https://leetcode-cn.com/u/a000000/">
+                        <div class="surface">
+                            LeetCode
+                        </div>
+                    </a>
+                </div>
+                <div class="item top">
+                    <a href="">
+                        <div class="surface">
+                            Blog
+                        </div>
+                    </a>
+                </div>
+                <div class="item bottom">
+                    <a href="">
+                        <div class="surface">
+                            About
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="item back">
-                <a href="https://github.com/A0000000000">
-                    <div class="surface" style="background-image: url(./image/2.jpg);">
-                        Github
-                    </div>
-                </a>
-            </div>
-            <div class="item left">
-                <a href="#">
-                    <div class="surface" style="background-image: url(./image/3.jpg);">
-                        Index
-                    </div>
-                </a>
-            </div>
-            <div class="item right">
-                <a href="https://leetcode-cn.com/u/a000000/">
-                    <div class="surface" style="background-image: url(./image/4.jpg);">
-                        LeetCode
-                    </div>
-                </a>
-            </div>
-            <div class="item top">
-                <a href="">
-                    <div class="surface" style="background-image: url(./image/5.jpg);">
-                        Blog
-                    </div>
-                </a>
-            </div>
-            <div class="item bottom">
-                <a href="">
-                    <div class="surface" style="background-image: url(./image/6.jpg);">
-                        About
-                    </div>
-                </a>
-            </div>
+        </div>
+        <div class="links">
+            <a href="">Github</a>
+            <a href="">LeetCode</a>
+            <a href="">Blog</a>
+            <a href="">Github Pages</a>
+            <a href="">About</a>
+        </div>
+        <div class="runinfo">
+            <div>本网站运行时间: {{ time }}</div>
+            <div>您是第{{ visitCount }}位访客</div>
+        </div>
+        <div class="icp">
+            <a href="http://www.beian.miit.gov.cn/">鲁ICP备20003013号</a>
         </div>
     </div>
 </body>
