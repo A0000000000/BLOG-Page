@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="input">
+    <div class="input" v-if="view">
       <div class="item">
         <el-input v-model="username" placeholder="请输入用户名"></el-input>
       </div>
@@ -10,6 +10,9 @@
       <div class="item">
         <el-button type="primary" @click="login">登录</el-button>
       </div>
+    </div>
+    <div v-if="!view">
+      <p id="msg">登录成功! 密钥: {{ token }}</p>
     </div>
   </div>
 </template>
@@ -29,15 +32,32 @@
   margin: 20px 0px;
   padding: 0px 50px;
 }
+
+#msg {
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
+  color: black;
+}
 </style>
 
 <script>
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
+      view: true,
+      token: null,
     };
+  },
+  mounted() {
+    this.token = this.$store.getters.getToken;
+    if (this.token !== null && this.token !== undefined && this.token !== "") {
+      this.view = false;
+    } else {
+      this.view = true;
+    }
   },
   methods: {
     login() {
@@ -45,9 +65,14 @@ export default {
         username: this.username,
         password: this.password,
       };
-      this.$axios.post('/admin/login', params).then(res => {
-          let data = res.data;
-          console.log(data);
+      this.$store.dispatch("login", {
+        params,
+        callback: (data) => {
+          if (data.code === 0) {
+            this.token = this.$store.getters.getToken;
+            this.view = false;
+          }
+        },
       });
     },
   },
