@@ -1,20 +1,37 @@
 <template>
   <div id="app">
+    <div id="title">网站后台管理页面</div>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">首页</router-link>|
+      <router-link to="/login">登录</router-link>|
+      <router-link to="/about">系统配置</router-link>|
+      <router-link to="/about">网站信息</router-link>|
+      <router-link to="/about">用户信息</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: gray;
+  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px 15%;
+  padding: 50px 0px;
+}
+
+#title {
+  text-align: center;
+  font-size: 30px;
+  color: skyblue;
 }
 
 #nav {
