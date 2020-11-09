@@ -44,28 +44,26 @@ $(function () {
     window.vm = new Vue({
         el: '#app',
         mounted() {
-            let visitCountUrl = getFullURL('visitCount');
-            axios.get(visitCountUrl).then(res => {
+            let indexDataURL = getFullURL('indexData');
+            axios.get(indexDataURL).then(res => {
                 let data = res.data;
-                if (data.code === 0) {
-                    this.visitCount = data.data;
-                } else {
-                    console.log(data.message);
-                    this.visitCount = 0;
+                if (data && data.visitCount) {
+                    if (data.visitCount.code === 0) {
+                        this.visitCount = data.visitCount.data;
+                    } else {
+                        console.log(data.visitCount.message);
+                    }
                 }
-            });
-            let timeUrl = getFullURL('systemCreateTime');
-            axios.get(timeUrl).then(res => {
-                let data = res.data;
-                if (data.code === 0) {
-                    this.time = data.data;
-                } else {
-                    console.log(data.message);
-                    this.time = 0;
+                if (data && data.systemCreateTime) {
+                    if (data.systemCreateTime.code === 0) {
+                        this.time = data.systemCreateTime.data;
+                        this.interval = setInterval(() => {
+                            this.time = this.time + 1000;
+                        }, 1000);
+                    } else {
+                        console.log(data.systemCreateTime.message);
+                    }
                 }
-                this.interval = setInterval(() => {
-                    this.time = this.time + 1000;
-                }, 1000);
             });
         },
         data() {

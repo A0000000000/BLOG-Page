@@ -12,7 +12,11 @@
       </div>
     </div>
     <div v-if="!view">
-      <p id="msg">登录成功! 密钥: {{ token }}</p>
+      <p id="msg">已登录, 密钥: {{ token }}</p>
+      <div>
+        <el-button type="primary" @click="saveToken">保存密钥</el-button>
+        <el-button type="primary" @click="deleteToken">删除密钥</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -22,10 +26,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0px;
+  padding: 0px 10%;
 }
 
 .input {
-  width: 50%;
+  width: auto;
 }
 
 .item {
@@ -52,12 +58,15 @@ export default {
     };
   },
   mounted() {
-    this.token = this.$store.getters.getToken;
-    if (this.token !== null && this.token !== undefined && this.token !== "") {
-      this.view = false;
-    } else {
-      this.view = true;
-    }
+    this.$store.dispatch("reflushToken", {
+      params: {
+        token: this.token,
+      },
+      callback: () => {
+        this.token = this.$store.getters.getToken;
+        this.view = !this.token || this.token === "" || this.token === "null";
+      },
+    });
   },
   methods: {
     login() {
@@ -70,9 +79,33 @@ export default {
         callback: (data) => {
           if (data.code === 0) {
             this.token = this.$store.getters.getToken;
+            this.$message({
+              message: "登录成功",
+              type: "success",
+            });
             this.view = false;
+          } else {
+            this.$message.error(data.message);
           }
         },
+      });
+    },
+    saveToken() {
+      if (this.token && this.token !== "") {
+        window.localStorage.setItem("a00000_blog_token", this.token);
+        this.$message({
+          message: "保存成功",
+          type: "success",
+        });
+      } else {
+        this.$message.error("保存失败, 密钥为空");
+      }
+    },
+    deleteToken() {
+      window.localStorage.removeItem("a00000_blog_token");
+      this.$message({
+        message: "删除成功",
+        type: "success",
       });
     },
   },

@@ -4,9 +4,9 @@
     <div id="nav">
       <router-link to="/">首页</router-link>|
       <router-link to="/login">登录</router-link>|
-      <router-link to="/about">系统配置</router-link>|
-      <router-link to="/about">网站信息</router-link>|
-      <router-link to="/about">用户信息</router-link>
+      <router-link to="/systemConfig">系统配置</router-link>|
+      <router-link to="/websiteInfo">网站信息</router-link>|
+      <router-link to="/userInfo">用户信息</router-link>
     </div>
     <router-view />
   </div>
@@ -41,6 +41,7 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
