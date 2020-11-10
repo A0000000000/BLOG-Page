@@ -113,13 +113,112 @@ export default new Vuex.Store({
         callback(data);
       });
     },
-    getAccessSource(context, {params, callback}) {
+    getAccessSource(context, { params, callback }) {
       let config = {
         headers: {
           token: context.getters.getToken
         }
       };
       this._vm.$axios.post('/systemConfig/accessSource', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    addAccessSource(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/accessSource/add', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    deleteAccessSource(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/accessSource/remove', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    getConfig(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/config', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    addConfig(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/config/add', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    updateConfig(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/config/update', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    deleteConfig(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/systemConfig/config/remove', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    getUserView(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/admin/userView', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    changeUserStatus(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/user/update', params, config).then(res => {
+        let data = res.data;
+        callback(data);
+      });
+    },
+    addUser(context, { params, callback }) {
+      let config = {
+        headers: {
+          token: context.getters.getToken
+        }
+      };
+      this._vm.$axios.post('/user/add', params, config).then(res => {
         let data = res.data;
         callback(data);
       });

@@ -5,6 +5,7 @@
       <div id="left">
         <router-link class="link" to="/systemConfig/codeContrast">错误码对照表</router-link>
         <router-link class="link" to="/systemConfig/accessSource">访问来源</router-link>
+        <router-link class="link" to="/systemConfig/config">系统配置</router-link>
       </div>
       <div id="right">
         <router-view></router-view>

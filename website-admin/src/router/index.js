@@ -34,6 +34,11 @@ const routes = [
         path: 'accessSource',
         name: 'AccessSource',
         component: () => import('../components/system_config/AccessSource.vue')
+      },
+      {
+        path: 'config',
+        name: 'Config',
+        component: () => import('../components/system_config/Config.vue')
       }
     ]
   },
@@ -53,6 +58,11 @@ const routes = [
         component: () => import('../components/websit_info/AccessInfo.vue')
       }
     ]
+  },
+  {
+    path: '/userInfo',
+    name: 'UserInfo',
+    component: () => import('../views/UserInfo.vue')
   }
 ];
 
