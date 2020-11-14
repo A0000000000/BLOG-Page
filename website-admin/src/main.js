@@ -11,7 +11,9 @@ Vue.prototype.$axios = axios;
 Vue.prototype.qs = QS;
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
-
+Vue.prototype.config = {
+  disableFlushToken: true
+};
 new Vue({
   router,
   store,

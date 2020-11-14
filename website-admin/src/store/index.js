@@ -45,18 +45,26 @@ export default new Vuex.Store({
         });
         return;
       }
-      this._vm.$axios.post('/admin/reflushToken', params).then(res => {
-        let data = res.data;
-        if (data.code === 0) {
-          context.commit('setToken', data.data);
-          if (window.localStorage.getItem('a00000_blog_token')) {
-            window.localStorage.setItem('a00000_blog_token', data.data);
+      if (this._vm.config.disableFlushToken) {
+        context.commit('setToken', params.token);
+        callback({
+          code: 1,
+          message: '未刷新token'
+        });
+      } else {
+        this._vm.$axios.post('/admin/reflushToken', params).then(res => {
+          let data = res.data;
+          if (data.code === 0) {
+            context.commit('setToken', data.data);
+            if (window.localStorage.getItem('a00000_blog_token')) {
+              window.localStorage.setItem('a00000_blog_token', data.data);
+            }
+          } else {
+            console.log(data.message);
           }
-        } else {
-          console.log(data.message);
-        }
-        callback(data);
-      });
+          callback(data);
+        });
+      }
     },
     getLogs(context, { params, callback }) {
       let config = {
