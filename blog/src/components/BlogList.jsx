@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class BlogList extends React.Component {
-
     constructor(props) {
         super(props)
         this.state = {

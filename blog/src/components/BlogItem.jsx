@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 class BlogItem extends React.Component {
-
     render() {
         return (
             <div>
@@ -10,7 +9,6 @@ class BlogItem extends React.Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = state => ({
